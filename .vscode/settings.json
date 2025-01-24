@@ -5,7 +5,7 @@
         "server": "formation-irishealth",
         "password": "SYS",
         "links": {
-            "IRIS Portal": "https://${host}:8442/formation-irishealth/csp/sys/%25CSP.Portal.Home.zen",
+            "IRIS Portal": "https://${host}:843/formation-irishealth/csp/sys/%25CSP.Portal.Home.zen",
             "White board": "https://excalidraw.com/",
             "EM Management Portal": "http://${host}:8004/csp/sys/UtilHome.csp",
             "CD Management Portal": "http://${host}:8005/csp/sys/UtilHome.csp",
@@ -24,7 +24,8 @@
             "IRIS METRICS PREVIEW": "http://localhost:8006/api/monitor/metrics",
             "Class Reference EM": "http://${host}:8004/csp/documatic/%25CSP.Documatic.cls?LIBRARY=USER",
             "Class Reference CD": "http://${host}:8005/csp/documatic/%25CSP.Documatic.cls?LIBRARY=USER",
-            "Class Reference PREVIEW": "http://${host}:8006/csp/documatic/%25CSP.Documatic.cls?LIBRARY=USER"
+            "Class Reference PREVIEW": "http://${host}:8006/csp/documatic/%25CSP.Documatic.cls?LIBRARY=USER",
+            "InterSystems IRIS Driver Packages": "https://intersystems-community.github.io/iris-driver-distribution/"
         }
     }
 }

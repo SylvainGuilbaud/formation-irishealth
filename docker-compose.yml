@@ -100,3 +100,47 @@ services:
       - TINI_SUBREAPER=1
       - ISC_CPF_MERGE_FILE=/irisdev/app/merge.cpf
       - ISC_DATA_DIRECTORY=/volumes/iris-preview
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./postgreSQL:/docker-entrypoint-initdb.d/
+      - ./volumes/postgreSQL:/var/lib/postgresql/data
+    ports:
+      - 8007:5432
+    restart: unless-stopped
+    healthcheck:
+        test: ["CMD", "pg_isready", "-U", "postgres"]
+        interval: 30s
+        timeout: 30s
+        retries: 3
+    # networks:
+    #   irisnetwork:
+    #     ipv4_address: 172.0.0.12
+  ftp_server:
+    image: delfer/alpine-ftp-server:latest
+    container_name: ftp-server
+    ports:
+      - "281:21"
+      - "21800-21810:21000-21010"
+    volumes: 
+      - "./data:/home/app/"
+      # - "./data/passwd:/etc/pure-ftpd/passwd"
+# uncomment for ssl/tls, see https://github.com/stilliard/docker-pure-ftpd#tls
+#      - "/folder_on_disk/ssl:/etc/ssl/private/"
+# or ssl/tls with Let's Encrypt (cert and key as two files)
+#      - "/etc/letsencrypt/live/<your_server>/cert.pem:/etc/ssl/private/pure-ftpd-cert.pem"
+#      - "/etc/letsencrypt/live/<your_server>/privkey.pem:/etc/ssl/private/pure-ftpd-key.pem"
+    environment:
+      PUBLICHOST: "localhost"
+      USERS: "app|youneverknow|/home/app|10000"
+      ADDRESS: "172.0.0.100"
+# also for ssl/tls:
+#      ADDED_FLAGS: "--tls=2"
+    restart: always
+    # networks:
+    #   irisnetwork:
+    #     ipv4_address: 172.0.0.100
