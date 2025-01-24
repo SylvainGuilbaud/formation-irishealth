@@ -1,6 +1,12 @@
 .DS_Store
-__pycache__
+**/.DS_Store
+**/*.log
+**/*.tar
+**/*.gz
+**/IRIS.DAT
+**/iris.lck
 
+__pycache__
 
 iris-main.log
 .venv
@@ -10,4 +16,4 @@ waitISC.log
 # notetbook ignore
 .ipynb_checkpoints
 
-/dur
+/volumes
