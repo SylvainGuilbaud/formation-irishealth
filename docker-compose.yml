@@ -1,0 +1,35 @@
+services:
+  iris:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    container_name: formation-irishealth
+    hostname: formation-irishealth
+    environment:
+      - ISC_CPF_MERGE_FILE=/irisdev/app/merge.cpf
+      - ISC_DATA_DIRECTORY=/dur/iconfig
+    ports: 
+      - 1972
+      - 53773
+    volumes:
+      - .:/irisdev/app
+      - ./dur:/dur
+      - ./data:/data
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
+    command: --key /irisdev/app/key/iris.key -a /irisdev/app/configure.sh
+
+
+  webgateway:
+    image: containers.intersystems.com/intersystems/webgateway:latest-em
+    init: true
+    ports:
+    - 880:80
+    - 843:443
+    environment:
+    - ISC_CSP_CONF_FILE=/webgateway/CSP.conf
+    - ISC_CSP_INI_FILE=/webgateway/CSP.ini
+    volumes:
+      - ./webgateway:/webgateway
+      - ./webgateway/cert:/opt/cert
