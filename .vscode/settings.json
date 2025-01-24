@@ -5,7 +5,8 @@
         "server": "formation-irishealth",
         "password": "SYS",
         "links": {
-            "IRIS Portal": "https://${host}:8442/formation-irishealth/csp/sys/%25CSP.Portal.Home.zen"
+            "IRIS Portal": "https://${host}:8442/formation-irishealth/csp/sys/%25CSP.Portal.Home.zen",
+            "White board": "https://excalidraw.com/"
         }
     }
 }
