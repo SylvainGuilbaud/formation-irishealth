@@ -18,8 +18,9 @@ services:
       - ./data:/data
       - ./code:/code
       - ./key:/key
-      # - /etc/timezone:/etc/timezone:ro
-      # - /etc/localtime:/etc/localtime:ro
+      - ./jdbc:/jdbc
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     command: --key /irisdev/app/key/iris.key -a /irisdev/app/configure.sh
 
 
@@ -48,6 +49,9 @@ services:
     - ./volumes:/volumes
     - ./data:/data
     - ./code:/code
+    - ./jdbc:/jdbc
+    - /etc/timezone:/etc/timezone:ro
+    - /etc/localtime:/etc/localtime:ro
     command: -a /IRIS/configure.sh
     ports:
       - 19724:1972
@@ -70,6 +74,9 @@ services:
     - ./volumes:/volumes
     - ./data:/data
     - ./code:/code
+    - ./jdbc:/jdbc
+    - /etc/timezone:/etc/timezone:ro
+    - /etc/localtime:/etc/localtime:ro
     command: -a /IRIS/configure.sh
     ports:
       - 19725:1972
@@ -92,6 +99,9 @@ services:
     - ./volumes:/volumes
     - ./data:/data
     - ./code:/code
+    - ./jdbc:/jdbc
+    - /etc/timezone:/etc/timezone:ro
+    - /etc/localtime:/etc/localtime:ro
     command: -a /IRIS/configure.sh
     ports:
       - 19726:1972

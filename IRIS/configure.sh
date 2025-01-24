@@ -6,7 +6,7 @@ zn "user"
 do ##class(%EnsembleMgr).EnableNamespace("USER")
 set ^trace(\$i(^trace))=\$zdt(\$h,3)
 zw ^trace
-do ##class(%SYSTEM.OBJ).Load("/iris/ipm.cls","ck")
+do ##class(%SYSTEM.OBJ).Load("/IRIS/ipm.cls","ck")
 do ##class(iris.ipm).install()
 halt
 EOF
