@@ -1,4 +1,3 @@
-ARG IMAGE=containers.intersystems.com/intersystems/irishealth:2024.3
 ARG IMAGE=containers.intersystems.com/intersystems/irishealth:latest-preview
 FROM $IMAGE
 

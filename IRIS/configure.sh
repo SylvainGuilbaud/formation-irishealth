@@ -5,8 +5,8 @@ do ##class(%SYSTEM.CSP).SetConfig("CSPConfigName","$HOSTNAME")
 zn "user"
 do ##class(%EnsembleMgr).EnableNamespace("USER")
 set ^trace(\$i(^trace))=\$zdt(\$h,3)
-zw ^trace
-do ##class(%SYSTEM.OBJ).Load("/IRIS/ipm.cls","ck")
-do ##class(iris.ipm).install()
+do ##class(%SYSTEM.OBJ).Load("/IRIS/install.cls","ck")
+do ##class(iris.install).ipm()
+do ##class(iris.install).jdbc()
 halt
 EOF
