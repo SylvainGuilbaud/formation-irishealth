@@ -127,33 +127,6 @@ services:
         interval: 30s
         timeout: 30s
         retries: 3
-    # networks:
-    #   irisnetwork:
-    #     ipv4_address: 172.0.0.12
-  ftp_server:
-    image: delfer/alpine-ftp-server:latest
-    container_name: ftp-server
-    ports:
-      - "281:21"
-      - "21800-21810:21000-21010"
-    volumes: 
-      - "./data:/home/app/"
-      # - "./data/passwd:/etc/pure-ftpd/passwd"
-# uncomment for ssl/tls, see https://github.com/stilliard/docker-pure-ftpd#tls
-#      - "/folder_on_disk/ssl:/etc/ssl/private/"
-# or ssl/tls with Let's Encrypt (cert and key as two files)
-#      - "/etc/letsencrypt/live/<your_server>/cert.pem:/etc/ssl/private/pure-ftpd-cert.pem"
-#      - "/etc/letsencrypt/live/<your_server>/privkey.pem:/etc/ssl/private/pure-ftpd-key.pem"
-    environment:
-      PUBLICHOST: "localhost"
-      USERS: "app|youneverknow|/home/app|10000"
-      ADDRESS: "172.0.0.100"
-# also for ssl/tls:
-#      ADDED_FLAGS: "--tls=2"
-    restart: always
-    # networks:
-    #   irisnetwork:
-    #     ipv4_address: 172.0.0.100
   iris-dev:
     image: ${IMAGE_IRIS_EM} # EXTENDED MAINTENANCE
     init: true
