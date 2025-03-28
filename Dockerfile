@@ -27,6 +27,7 @@ ENV JRE_HOME /usr/lib/jvm/java-21-openjdk-arm64/
 ENV CLASSPATH .:/usr/irissys/dev/java/lib/1.8/*
 ENV PATH "/home/irisowner/iris_env/bin:/home/irisowner/.local/bin:/usr/irissys/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/irisowner/bin:${JAVA_HOME}/bin:${PATH}"
 
+# copy iris.key to the image temporarily to build the image
 COPY ./key/iris.key /usr/irissys/mgr/iris.key
 
 RUN --mount=type=bind,src=.,dst=. \
