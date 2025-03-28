@@ -1,7 +1,7 @@
 {
     "objectscript.conn": {
         "active": true,
-        "ns": "IRISAPP",
+        "ns": "BOW",
         "server": "formation-irishealth",
         "port": 880,
         "password": "SYS",
@@ -33,5 +33,47 @@
             "InterSystems IRIS Driver Packages": "https://intersystems-community.github.io/iris-driver-distribution/",
             "IPM": "https://github.com/intersystems/ipm/wiki/01.-Getting-started"
         }
-    }
+    },
+    "sqltools.connections": [
+        {
+            "namespace": "USER",
+            "connectionMethod": "Server and Port",
+            "showSystem": false,
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 880,
+            "https": true,
+            "askForPassword": true,
+            "driver": "InterSystems IRIS",
+            "name": "IRISAPP",
+            "username": "_system",
+            "password": "SYS"
+        },
+        {
+            "namespace": "IRISAPP",
+            "connectionMethod": "Server and Port",
+            "showSystem": false,
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 880,
+            "https": false,
+            "askForPassword": true,
+            "driver": "InterSystems IRIS",
+            "name": "formation",
+            "username": "_system"
+        },
+        {
+            "namespace": "SYLVAIN",
+            "connectionMethod": "Server and Port",
+            "showSystem": false,
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 881,
+            "https": false,
+            "askForPassword": true,
+            "driver": "InterSystems IRIS",
+            "name": "bowmedical",
+            "username": "_system"
+        }
+    ]
 }
