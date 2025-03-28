@@ -15,7 +15,7 @@ ClassMethod GetInfo() As %Status
 {
     set sc = $$$OK
 
-    write "hello world " _ $ZDATE($h,3),!
+    write "hello world " _ $ZDATETIME($h,3),!
 
     return sc
 }
