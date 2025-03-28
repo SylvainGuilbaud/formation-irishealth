@@ -25,7 +25,7 @@ services:
 
 
   webgateway:
-    image: containers.intersystems.com/intersystems/webgateway:latest-preview
+    image: containers.intersystems.com/intersystems/webgateway:2025.1
     init: true
     ports:
     - 880:80
