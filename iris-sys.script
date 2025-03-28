@@ -43,8 +43,7 @@
     set webProperties("DispatchClass") = "common.REST"
     set webProperties("NameSpace") = "USER"
     set webProperties("Enabled") = 1
-    set webProperties("AutheEnabled") = 96
-    set webProperties("MatchRoles")=":%All"
+    set webProperties("AutheEnabled") = 32
     set sc = ##class(Security.Applications).Create(webName, .webProperties)
     if 'sc {
         set ^["USER"]TRACE($zdt($now(),3,,6),"Web App "_webName)=$lb($system.Status.GetErrorCodes(sc),$system.Status.GetErrorText(sc))

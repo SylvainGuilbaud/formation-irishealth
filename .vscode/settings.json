@@ -22,15 +22,6 @@
             "IRIS API Management DEV": "http://localhost:${port}/api/mgmnt/",
             "IRIS METRICS DEV": "http://localhost:${port}/api/monitor/metrics",
             "Class Reference DEV": "http://${host}:${port}/csp/documatic/%25CSP.Documatic.cls?LIBRARY=USER",
-            "IRIS API Management EM": "http://localhost:8004/api/mgmnt/",
-            "IRIS API Management CD": "http://localhost:8005/api/mgmnt/",
-            "IRIS API Management PREVIEW": "http://localhost:8006/api/mgmnt/",
-            "IRIS METRICS EM": "http://localhost:8004/api/monitor/metrics",
-            "IRIS METRICS CD": "http://localhost:8005/api/monitor/metrics",
-            "IRIS METRICS PREVIEW": "http://localhost:8006/api/monitor/metrics",
-            "Class Reference EM": "http://${host}:8004/csp/documatic/%25CSP.Documatic.cls?LIBRARY=USER",
-            "Class Reference CD": "http://${host}:8005/csp/documatic/%25CSP.Documatic.cls?LIBRARY=USER",
-            "Class Reference PREVIEW": "http://${host}:8006/csp/documatic/%25CSP.Documatic.cls?LIBRARY=USER",
             "InterSystems IRIS Driver Packages": "https://intersystems-community.github.io/iris-driver-distribution/",
             "IPM": "https://github.com/intersystems/ipm/wiki/01.-Getting-started"
         }
