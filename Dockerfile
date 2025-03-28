@@ -27,6 +27,8 @@ ENV JRE_HOME /usr/lib/jvm/java-21-openjdk-arm64/
 ENV CLASSPATH .:/usr/irissys/dev/java/lib/1.8/*
 ENV PATH "/home/irisowner/iris_env/bin:/home/irisowner/.local/bin:/usr/irissys/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/irisowner/bin:${JAVA_HOME}/bin:${PATH}"
 
+COPY ./key/iris.key /usr/irissys/mgr/iris.key
+
 RUN --mount=type=bind,src=.,dst=. \
     export JAVA_HOME && \ 
     export JRE_HOME && \
@@ -38,4 +40,5 @@ RUN --mount=type=bind,src=.,dst=. \
     iris session IRIS < iris-sys.script && \
     iris merge IRIS merge.cpf && \
 	iris session IRIS < iris-app.script && \
-    iris stop IRIS quietly
+    iris stop IRIS quietly && \
+    rm -f /usr/irissys/mgr/iris.key
