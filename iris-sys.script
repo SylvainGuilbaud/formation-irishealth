@@ -7,13 +7,13 @@
     if 'sc { set ^["USER"]TRACE($zdt($now(),3,,6),step)=$lb($system.Status.GetErrorCodes(sc),$system.Status.GetErrorText(sc))} else { set ^["USER"]TRACE($zdt($now(),3,,6),step)="successful"}
    
     // common
-    #; set sc = $system.OBJ.Load("/home/irisowner/dev/common/inc/common.inc","ck")
-    #; set step="Load common.inc "
-    #; if 'sc { set ^["USER"]TRACE($zdt($now(),3,,6),step)=$lb($system.Status.GetErrorCodes(sc),$system.Status.GetErrorText(sc))} else { set ^["USER"]TRACE($zdt($now(),3,,6),step)="successful"}
+    set sc = $system.OBJ.Import("/home/irisowner/dev/common/inc/common.inc","ck")
+    set step="Load common.inc "
+    if 'sc { set ^["USER"]TRACE($zdt($now(),3,,6),step)=$lb($system.Status.GetErrorCodes(sc),$system.Status.GetErrorText(sc))} else { set ^["USER"]TRACE($zdt($now(),3,,6),step)="successful"}
    
-    #; set sc = $SYSTEM.OBJ.LoadDir("/home/irisowner/dev/common","ck",,1)
-    #; set step="Load common package "
-    #; if 'sc { set ^["USER"]TRACE($zdt($now(),3,,6),step)=$lb($system.Status.GetErrorCodes(sc),$system.Status.GetErrorText(sc))} else { set ^["USER"]TRACE($zdt($now(),3,,6),step)="successful"}
+    set sc = $SYSTEM.OBJ.Import("/home/irisowner/dev/common","ck")
+    set step="Load common package "
+    if 'sc { set ^["USER"]TRACE($zdt($now(),3,,6),step)=$lb($system.Status.GetErrorCodes(sc),$system.Status.GetErrorText(sc))} else { set ^["USER"]TRACE($zdt($now(),3,,6),step)="successful"}
    
     //set r=##class(%Net.HttpRequest).%New(),r.Server="pm.community.intersystems.com",r.SSLConfiguration="ISC.FeatureTracker.SSL.Config" d r.Get("/packages/zpm/latest/installer"),$system.OBJ.LoadStream(r.HttpResponse.Data,"c")
     set sc = $SYSTEM.OBJ.Import("/home/irisowner/dev/zpm-0.9.1.xml","ck")
@@ -36,6 +36,21 @@
 
     do ##class(Security.Users).UnExpireUserPasswords("*")
     do ##class(%SQL.Statement).%ExecDirect(,"update security.events set enabled=1")
+
+    set webName = "/common"
+    write "Create web application ...",webName
+    
+    set webProperties("DispatchClass") = "common.REST"
+    set webProperties("NameSpace") = "USER"
+    set webProperties("Enabled") = 1
+    set webProperties("AutheEnabled") = 96
+    set webProperties("MatchRoles")=":%All"
+    set sc = ##class(Security.Applications).Create(webName, .webProperties)
+    if 'sc {
+        set ^["USER"]TRACE($zdt($now(),3,,6),"Web App "_webName)=$lb($system.Status.GetErrorCodes(sc),$system.Status.GetErrorText(sc))
+    } else {
+        set ^["USER"]TRACE($zdt($now(),3,,6),"Web App "_webName)="successful"
+    }
 
     set username="interop"
     set roles="%EnsRole_Developer,%DB_IRISAPP_CODE,%DB_IRISAPP_DATA"
@@ -60,15 +75,6 @@
     #; set sc = ##class(%SYSTEM.Encryption).ActivateAutoEncryptionKey(EncryptionKeyFile,EncryptionKeyUser,EncryptionKeyPassword,1,1,1)
     #; set step="Activate Encryption Key"
     #; if 'sc { set ^["USER"]TRACE($zdt($now(),3,,6),step)=$lb($system.Status.GetErrorCodes(sc),$system.Status.GetErrorText(sc))} else { set ^["USER"]TRACE($zdt($now(),3,,6),step)="successful"}
-
-    // SSL Config 
-
-    set SSLConfigName = "chu-toulouse"
-    set ipcSSLConfig("Type")=0
-    set ipcSSLConfig("Description")="CHU Toulouse"
-    set sc =  ##class(Security.SSLConfigs).Create(SSLConfigName,.ipcSSLConfig)
-    set step="Create SSL config " _ SSLConfigName
-    if 'sc { set ^["USER"]TRACE($zdt($now(),3,,6),step)=$lb($system.Status.GetErrorCodes(sc),$system.Status.GetErrorText(sc))} else { set ^["USER"]TRACE($zdt($now(),3,,6),step)="successful"}
 
 
     set SSLConfigName = "webgateway"

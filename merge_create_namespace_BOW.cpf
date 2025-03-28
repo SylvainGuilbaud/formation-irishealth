@@ -1,6 +1,0 @@
-[Actions]
-CreateResource:Name=%DB_GASTON_DATA,Description="GASTON_DATA database"
-CreateDatabase:Name=GASTON_DATA,Directory=/volumes/iris/mgr/GASTON_DATA,Resource=%DB_GASTON_DATA
-CreateResource:Name=%DB_GASTON_CODE,Description="GASTON_CODE database"
-CreateDatabase:Name=GASTON_CODE,Directory=/volumes/iris/mgr/GASTON_CODE,Resource=%DB_GASTON_CODE
-CreateNamespace:Name=GASTON,Globals=GASTON_DATA,Routines=GASTON_CODE,Interop=1
