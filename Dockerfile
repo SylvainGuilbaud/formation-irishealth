@@ -1,4 +1,6 @@
 ARG IMAGE=containers.intersystems.com/intersystems/irishealth:latest-preview
+ARG IMAGE=containers.intersystems.com/intersystems/irishealth:2025.1
+
 FROM $IMAGE
 
 USER root
