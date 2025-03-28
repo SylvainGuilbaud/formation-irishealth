@@ -21,7 +21,7 @@ services:
       - ./jdbc:/jdbc
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-    command: --key /irisdev/app/key/iris.key -a /irisdev/app/configure.sh
+    command: --key /key/iris.key -a /irisdev/app/configure.sh
 
 
   webgateway:
