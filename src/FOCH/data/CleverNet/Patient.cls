@@ -9,7 +9,7 @@ Property DOB As %Date(FORMAT = 4) [ Required ];
 
 Property DOBTS As %TimeStamp [ Required ];
 
-Property Gender As %String(VALUELIST = "M,F") [ Required ];
+Property Gender As %String(VALUELIST = ",M,F") [ Required ];
 
 Property IPP As %String(MAXLEN = "") [ Required ];
 
