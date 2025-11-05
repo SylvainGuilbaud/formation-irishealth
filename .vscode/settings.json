@@ -1,7 +1,7 @@
 {
     "objectscript.conn": {
-        "active": false,
-        "ns": "USER",
+        "active": true,
+        "ns": "FOCH",
         "host": "ec2-63-177-51-255.eu-central-1.compute.amazonaws.com",
         "port": 57772,
         "password": "SYS",
@@ -25,16 +25,16 @@
     },
     "sqltools.connections": [
         {
-            "namespace": "USER",
+            "namespace": "FOCH",
             "connectionMethod": "Server and Port",
             "showSystem": false,
             "previewLimit": 50,
             "server": "ec2-63-177-51-255.eu-central-1.compute.amazonaws.com",
             "port": 57772,
-            "https": true,
+            "https": false,
             "askForPassword": true,
             "driver": "InterSystems IRIS",
-            "name": "USER",
+            "name": "FOCH",
             "username": "_system",
             "password": "SYS"
         }

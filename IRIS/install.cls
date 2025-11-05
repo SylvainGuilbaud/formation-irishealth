@@ -1,4 +1,4 @@
-Class iris.install
+Class init.install
 {
 
 /// Install IPM
