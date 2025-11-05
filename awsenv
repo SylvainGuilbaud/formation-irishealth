@@ -1,0 +1,3 @@
+export AWS_ACCESS_KEY_FILENAME=./key/IRISHealth-key.pem
+export AWS_PUBLIC_DNS=ec2-63-177-51-255.eu-central-1.compute.amazonaws.com
+export AWS_USERNAME=ubuntu

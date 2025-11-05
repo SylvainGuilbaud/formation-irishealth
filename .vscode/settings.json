@@ -1,14 +1,11 @@
 {
     "objectscript.conn": {
-        "active": true,
-        "ns": "IRISAPP",
-        "server": "formation-irishealth",
-        "port": 880,
+        "active": false,
+        "ns": "USER",
+        "host": "ec2-63-177-51-255.eu-central-1.compute.amazonaws.com",
+        "port": 57772,
         "password": "SYS",
-        "docker-compose": {
-            "internalPort": 880,
-            "service": "iris"
-        },
+        "username": "_SYSTEM",
         "links": {
             "White board": "https://excalidraw.com/",
             "IRIS Portal HTTPS": "https://${host}:843/formation-irishealth/csp/sys/%25CSP.Portal.Home.zen",
@@ -32,40 +29,14 @@
             "connectionMethod": "Server and Port",
             "showSystem": false,
             "previewLimit": 50,
-            "server": "localhost",
-            "port": 880,
+            "server": "ec2-63-177-51-255.eu-central-1.compute.amazonaws.com",
+            "port": 57772,
             "https": true,
             "askForPassword": true,
             "driver": "InterSystems IRIS",
-            "name": "IRISAPP",
+            "name": "USER",
             "username": "_system",
             "password": "SYS"
-        },
-        {
-            "namespace": "IRISAPP",
-            "connectionMethod": "Server and Port",
-            "showSystem": false,
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 880,
-            "https": false,
-            "askForPassword": true,
-            "driver": "InterSystems IRIS",
-            "name": "formation",
-            "username": "_system"
-        },
-        {
-            "namespace": "SYLVAIN",
-            "connectionMethod": "Server and Port",
-            "showSystem": false,
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 881,
-            "https": false,
-            "askForPassword": true,
-            "driver": "InterSystems IRIS",
-            "name": "bowmedical",
-            "username": "_system"
         }
     ]
 }

@@ -111,22 +111,22 @@ services:
   #     - ISC_CPF_MERGE_FILE=/irisdev/app/merge.cpf
   #     - ISC_DATA_DIRECTORY=/volumes/iris-preview
 
-  postgres:
-    container_name: postgres
-    image: postgres
-    environment:
-      POSTGRES_PASSWORD: postgres
-    volumes:
-      - ./postgreSQL:/docker-entrypoint-initdb.d/
-      - ./volumes/postgreSQL:/var/lib/postgresql/data
-    ports:
-      - 8007:5432
-    restart: unless-stopped
-    healthcheck:
-        test: ["CMD", "pg_isready", "-U", "postgres"]
-        interval: 30s
-        timeout: 30s
-        retries: 3
+  # postgres:
+  #   container_name: postgres
+  #   image: postgres
+  #   environment:
+  #     POSTGRES_PASSWORD: postgres
+  #   volumes:
+  #     - ./postgreSQL:/docker-entrypoint-initdb.d/
+  #     - ./volumes/postgreSQL:/var/lib/postgresql/data
+  #   ports:
+  #     - 8007:5432
+  #   restart: unless-stopped
+  #   healthcheck:
+  #       test: ["CMD", "pg_isready", "-U", "postgres"]
+  #       interval: 30s
+  #       timeout: 30s
+  #       retries: 3
   iris-dev:
     image: ${IMAGE_IRIS_EM} # EXTENDED MAINTENANCE
     init: true
