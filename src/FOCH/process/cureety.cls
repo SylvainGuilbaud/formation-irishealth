@@ -2,6 +2,11 @@
 Class FOCH.process.cureety Extends Ens.BusinessProcessBPL
 {
 
+Storage Default
+{
+<Type>%Library.CacheStorage</Type>
+}
+
 /// BPL Definition
 XData BPL [ XMLNamespace = "http://www.intersystems.com/bpl" ]
 {
@@ -16,20 +21,15 @@ XData BPL [ XMLNamespace = "http://www.intersystems.com/bpl" ]
 <![CDATA[ set context.HL7Msg = ##class(EnsLib.HL7.Message).ImportFromString(request.raw.GetAt(context.k1),.sc)]]>
 </code>
 <trace name='HL7.Msg' value='context.HL7Msg.RawContent' xpos='200' ypos='350' />
-<call name='HL7 Router' target='HL7v2 router' async='1' xpos='200' ypos='450' >
+<call name='HL7 Router' target='MsgRouter' async='1' xpos='200' ypos='450' >
 <request type='EnsLib.HL7.Message' >
-<assign property="callrequest" value="context.HL7Msg" action="set" languageOverride="" />
+<assign property="callrequest" value="context.HL7Msg" action="set" />
 </request>
 <response type='Ens.Response' />
 </call>
 </foreach>
 </sequence>
 </process>
-}
-
-Storage Default
-{
-<Type>%Library.CacheStorage</Type>
 }
 
 }
